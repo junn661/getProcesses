@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace getProcess
 {
@@ -14,7 +13,7 @@ namespace getProcess
             listView1.Items.Clear();
         }
 
-        void main()
+        void tick()
         {
             if (!(textBox1.Text == ""))
             {
@@ -37,8 +36,10 @@ namespace getProcess
                             }
                         }
 
-                        listView1.TopItem = listView1.Items[topI];
-                        ;
+                        if (listView1.Items.Count != 0)
+                        {
+                            listView1.TopItem = listView1.Items[topI];
+                        }
                     }
                 }
             }
@@ -46,7 +47,7 @@ namespace getProcess
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            main();
+            tick();
         }
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
