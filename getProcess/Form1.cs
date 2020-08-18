@@ -15,32 +15,28 @@ namespace getProcess
 
         void tick()
         {
-            if (!(textBox1.Text == ""))
+            if (textBox1.Text == "") return;
+            if (checkBox1.Checked)
             {
-                if (checkBox1.Checked)
+                if (Process.GetProcesses().Length == listView1.Items.Count) return;
+                int topI = 0;
+                if (listView1.TopItem != null)
                 {
-                    if (Process.GetProcesses().Length != listView1.Items.Count)
+                    topI = listView1.TopItem.Index;
+                }
+
+                listView1.Items.Clear();
+                foreach (Process item in Process.GetProcesses())
+                {
+                    if (item.ProcessName.Contains(textBox1.Text))
                     {
-                        int topI = 0;
-                        if (listView1.TopItem != null)
-                        {
-                            topI = listView1.TopItem.Index;
-                        }
-
-                        listView1.Items.Clear();
-                        foreach (Process item in Process.GetProcesses())
-                        {
-                            if (item.ProcessName.Contains(textBox1.Text))
-                            {
-                                listView1.Items.Add(item.ProcessName);
-                            }
-                        }
-
-                        if (listView1.Items.Count != 0)
-                        {
-                            listView1.TopItem = listView1.Items[topI];
-                        }
+                        listView1.Items.Add(item.ProcessName);
                     }
+                }
+
+                if (listView1.Items.Count != 0)
+                {
+                    listView1.TopItem = listView1.Items[topI];
                 }
             }
         }
@@ -51,14 +47,7 @@ namespace getProcess
         }
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
-            {
-                TopMost = true;
-            }
-            else
-            {
-                TopMost = false;
-            }
+            TopMost = checkBox2.Checked;
         }
     }
 }
