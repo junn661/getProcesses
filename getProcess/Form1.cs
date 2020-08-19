@@ -49,5 +49,18 @@ namespace getProcess
         {
             TopMost = checkBox2.Checked;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Process item in Process.GetProcessesByName(textBox1.Text))
+            {
+                item.Kill();
+            }
+        }
+
+        private void listView1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = listView1.SelectedItems[0].Text;
+        }
     }
 }
