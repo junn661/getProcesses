@@ -11,6 +11,7 @@ namespace getProcess
             InitializeComponent();
             listView1.HeaderStyle = ColumnHeaderStyle.None;
             listView1.Items.Clear();
+            TopMost = checkBox2.Checked;
         }
 
         void tick()
@@ -34,7 +35,7 @@ namespace getProcess
                     }
                 }
 
-                if (listView1.Items.Count != 0)
+                if (listView1.Items.Count != 0 && topI <= listView1.Items.Count)
                 {
                     listView1.TopItem = listView1.Items[topI];
                 }
@@ -61,6 +62,11 @@ namespace getProcess
         private void listView1_Click(object sender, EventArgs e)
         {
             textBox1.Text = listView1.SelectedItems[0].Text;
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            textBox1.SelectAll();
         }
     }
 }
