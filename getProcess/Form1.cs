@@ -16,11 +16,17 @@ namespace getProcess
             TopMost = checkBox2.Checked;
         }
 
+        private System.Collections.Generic.IEnumerable<string> a;
         void tick()
         {
             if (textBox1.Text == "") return;
             if (!checkBox1.Checked) return;
-            if (Process.GetProcesses().Length == listView1.Items.Count) return;
+
+            a = from proc in Process.GetProcesses()
+                where proc.ProcessName.Contains(textBox1.Text)
+                select proc.ProcessName;
+
+            if (a.Count() == listView1.Items.Count) return;
 
             int topI = 0;
             if (listView1.TopItem != null)
@@ -40,10 +46,7 @@ namespace getProcess
 
             listView1.Items.Clear();
 
-            foreach (string item in from proc in Process.GetProcesses()
-                                    where proc.ProcessName.Contains(textBox1.Text)
-                                    orderby proc.ProcessName
-                                    select proc.ProcessName)
+            foreach (string item in a)
             {
                 listView1.Items.Add(item);
             }
