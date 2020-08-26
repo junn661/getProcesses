@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace getProcess
 {
@@ -89,6 +88,16 @@ namespace getProcess
         private void textBox1_Click(object sender, EventArgs e)
         {
             textBox1.SelectAll();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            timer1.Interval = (int)numericUpDown1.Value;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            tick();
         }
     }
 }
