@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace getProcess
 {
@@ -38,12 +39,13 @@ namespace getProcess
             }
 
             listView1.Items.Clear();
-            foreach (Process item in Process.GetProcesses())
+
+            foreach (string item in from proc in Process.GetProcesses()
+                                    where proc.ProcessName.Contains(textBox1.Text)
+                                    orderby proc.ProcessName
+                                    select proc.ProcessName)
             {
-                if (item.ProcessName.Contains(textBox1.Text))
-                {
-                    listView1.Items.Add(item.ProcessName);
-                }
+                listView1.Items.Add(item);
             }
 
             if (listView1.Items.Count != 0 && topI <= listView1.Items.Count)
