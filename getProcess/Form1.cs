@@ -55,7 +55,7 @@ namespace getProcess
                 listView1.TopItem = listView1.Items[topI];
             }
 
-            if (selecteditem != -1 && listView1.Items.Count >= selecteditem)
+            if (selecteditem != -1 && listView1.Items.Count >= selecteditem && listView1.Items.Count != 0)
             {
                 listView1.Items[selecteditem].Selected = true;
             }
