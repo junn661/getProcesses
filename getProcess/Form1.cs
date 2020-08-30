@@ -75,6 +75,7 @@ namespace getProcess
             foreach (Process item in Process.GetProcessesByName(textBox1.Text))
             {
                 item.Kill();
+                tick();
             }
         }
 
