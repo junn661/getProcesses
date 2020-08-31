@@ -93,8 +93,8 @@ namespace getProcess
             foreach (Process item in Process.GetProcessesByName(textBox1.Text))
             {
                 item.Kill();
-                tick();
             }
+            tick();
         }
 
         private void textBox1_Click(object sender, EventArgs e)
