@@ -99,7 +99,8 @@
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.Click += new System.EventHandler(this.listView1_Click);
+            this.listView1.SizeChanged += new System.EventHandler(this.listView1_SizeChanged);
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -173,7 +174,7 @@
             this.MinimumSize = new System.Drawing.Size(293, 357);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "processChecker";
+            this.Text = "ProcessChecker";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);

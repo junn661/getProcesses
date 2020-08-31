@@ -97,13 +97,6 @@ namespace getProcess
             }
         }
 
-        private void listView1_Click(object sender, EventArgs e)
-        {
-            if (listView1.SelectedItems.Count == 0) return;
-
-            textBox1.Text = listView1.SelectedItems[0].Text;
-        }
-
         private void textBox1_Click(object sender, EventArgs e)
         {
             textBox1.SelectAll();
@@ -117,6 +110,18 @@ namespace getProcess
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             tick();
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) return;
+
+            textBox1.Text = listView1.SelectedItems[0].Text;
+        }
+
+        private void listView1_SizeChanged(object sender, EventArgs e)
+        {
+            listView1.Columns[0].Width = listView1.Width - 15;
         }
     }
 }
