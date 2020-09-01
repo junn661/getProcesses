@@ -105,6 +105,7 @@ namespace getProcess
                 try
                 {
                     proc = Process.GetProcessById(item);
+                    proc.Kill();
                 }
                 catch (Exception)
                 {
@@ -112,7 +113,6 @@ namespace getProcess
                     tick();
                     return;
                 }
-                proc.Kill();
             }
             tick();
         }
