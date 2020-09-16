@@ -107,11 +107,16 @@ namespace getProcess
                     proc = Process.GetProcessById(item);
                     proc.Kill();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("액세스가 거부되었습니다.");
-                    tick();
-                    return;
+                    if (ex.GetType().FullName == "System.ComponentModel.Win32Exception" || ex.GetType().FullName == "System.ArgumentException")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
             tick();
