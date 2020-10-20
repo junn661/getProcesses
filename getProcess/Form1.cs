@@ -8,7 +8,7 @@ namespace getProcess
 {
     public partial class Form1 : Form
     {
-        bool chkWhenBlank = false;
+        private bool chkWhenBlank = false;
         private IEnumerable<Process> a;
         private List<int> pId = new List<int>();
 
@@ -20,7 +20,7 @@ namespace getProcess
             TopMost = checkBox2.Checked;
         }
 
-        void tick()
+        private void tick()
         {
             if (!checkBox1.Checked) return;
 
@@ -91,6 +91,7 @@ namespace getProcess
         {
             tick();
         }
+
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             TopMost = checkBox2.Checked;
@@ -98,6 +99,7 @@ namespace getProcess
 
         private void button1_Click(object sender, EventArgs e)
         {
+            button1.Enabled = false;
             Process proc;
 
             foreach (int item in pId)
@@ -119,6 +121,7 @@ namespace getProcess
                     }
                 }
             }
+            button1.Enabled = true;
             tick();
         }
 
